@@ -6,8 +6,8 @@ public class Program
     public static void Main(string[] args)
     {
         // Register users
-        User.Register("caolan158", "xyZk65", "mullincaolan@gmail.com", "07562140759", "15 Claggan Road", "Omagh");
-        User.Register2("Syed675", "89Cv2", "meeransyed@gmail.com", "0987654321", "456 Derry Rd", "Derry");
+        User.Register(1, "caolan158", "xyZk65", "mullincaolan@gmail.com", "07562140759", "15 Claggan Road", "Omagh");
+        User.Register2(2, "Syed675", "89Cv2", "meeransyed@gmail.com", "0987654321", "456 Derry Rd", "Derry");
 
         // login for administrators
         Admin admin = new Admin(1, "administrator1", "Code567", "malonekevin@gmail.com", "55890126", "47 Loughlin Rd", "Armagh City");
