@@ -90,6 +90,38 @@ public class Program
                         break;
                 }
             }
+
+            static void CustomerLogin()
+            {
+                while (true)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Customer Menu:);
+                    Console.WriteLine("1. View Profile");
+                    Console.WriteLine("2. Update Profile");
+                    Console.WriteLine("3. Exit);
+                    Console.Write("Enter your choice: );
+
+                    string choice = Console.ReadLine();
+
+                    switch (choice)
+                    {
+                        case "1":
+                        ViewCustomerProfile();
+                        break;
+                    case "2":
+                        updateCustomerProfile();
+                        break;
+                    case "3":
+                        Console.WriteLine("Exiting the program. Goodbye!");
+                        return;
+                    default:
+                        Console.WriteLine("Invalid choice. Please try again.");
+                        break;
+                }
+            }
+                        
+                                      
             static void ProductMenu()
             {
                 while (true)
