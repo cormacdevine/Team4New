@@ -91,7 +91,7 @@ public class Program
                 }
             }
 
-            static void CustomerLogin()
+            static void customerLogin()
             {
                 while (true)
                 {
