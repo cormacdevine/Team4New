@@ -7,12 +7,11 @@ public class Program
     {
         // Register users
         User.Register("caolan158", "xyZk65", "mullincaolan@gmail.com", "07562140759", "15 Claggan Road", "Omagh");
-        User.Register("Syed675", "89Cv2", "meeransyed@gmail.com", "0987654321", "456 Derry Rd", "Derry");
+        User.Register2("Syed675", "89Cv2", "meeransyed@gmail.com", "0987654321", "456 Derry Rd", "Derry");
 
         // login for administrators
-        admin Admin = new Admin(1, "administrator1", "Code567", "malonekevin@gmail.com, "55890126", "47 Loughlin Rd", "Armagh City");
-
-        admin Admin = new Admin(2, "administrator2", "Code567", "devinecormac@gmail.com", "1127698", "17 Omagh Rd", "Omagh");
+        Admin admin = new Admin(1, "administrator1", "Code567", "malonekevin@gmail.com", "55890126", "47 Loughlin Rd", "Armagh City");
+        Admin admin2 = new Admin(2, "administrator2", "Code567", "devinecormac@gmail.com", "1127698", "17 Omagh Rd", "Omagh");
 
         // View users (admin only)
         Admin.ViewAllUsers();
@@ -96,10 +95,10 @@ public class Program
                 while (true)
                 {
                     Console.Clear();
-                    Console.WriteLine("Customer Menu:);
+                    Console.WriteLine("Customer Menu:");
                     Console.WriteLine("1. View Profile");
                     Console.WriteLine("2. Update Profile");
-                    Console.WriteLine("3. Exit);
+                    Console.WriteLine("3. Exit");
                     Console.Write("Enter your choice: );
 
                     string choice = Console.ReadLine();
