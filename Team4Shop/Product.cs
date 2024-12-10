@@ -121,7 +121,7 @@ namespace Team4Shop
         }
 
         // Method to add stock to a product
-        public static void AddStock(int productID, int quantity)
+        public static void AddProduct(int productID, int quantity)
         {
             var product = products.Find(p => p.ProductID == productID);
             if (product != null)

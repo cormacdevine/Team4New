@@ -35,11 +35,11 @@ namespace Team4Shop
         //Method to register a new user
         public static void Register(string userName, string password, string email, string phoneNumber, string addressStreet, string addressCity)
         {
-            User NewUser = new User(users.Count + 1, userName, password, email, phoneNumber, addressStreet, addressCity)
+            User NewUser = new User(users.Count + 1, userName, password, email, phoneNumber, addressStreet, addressCity);
     
     //Adding in user to the list
     users.Add(NewUser);
-            Console.WriteLine("Registration Complete")
+            Console.WriteLine("Registration Complete");
         }
 
         //Login that will authenticate the user
@@ -79,7 +79,7 @@ namespace Team4Shop
         //Method to delete a user (for admin only)
         public static void DeleteUser(int userID)
         {
-            var usertoDelete = users.Find(u = > u.UserID == userID);
+            var usertoDelete = users.Find(u => u.UserID == userID);
             if (usertoDelete != null)
             {
                 users.Remove(usertoDelete);

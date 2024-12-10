@@ -16,13 +16,14 @@ namespace Team4Shop
         public Admin(int userID, string userName, string password, string email, string phoneNumber, string addressStreet, string addressCity)
             : base(userID, userName, password, email, phoneNumber, addressStreet, addressCity)
         {
-            LastLogin = decimal.MinValue;
-        }
+
+        }  
+        
 
         // Method to view users (admin can only access)
         public static void ViewAllUsers()
         {
-            var users = users.GetAllUsers();
+            var users = User.GetAllUsers();
             if (users.Count > 0)
             {
                 Console.WriteLine("List of all the registered users in the system");
@@ -40,23 +41,23 @@ namespace Team4Shop
         // Method that can delete user (admin can only access)
         public static void DeleteUser(int userID)
         {
-            var userToDelete = userID.GetAllUsers().Find(u => u.userID == userID);
+            var userToDelete = User.GetAllUsers().Find(u => u.UserID == userID);
             if (userToDelete != null)
             {
-                userID.GetAllUsers().Remove(userToDelete);
+                User.GetAllUsers().Remove(userToDelete);
                 Console.WriteLine($"User with ID {userID} was deleted");
             }
             else
             {
-                Console.WriteLine("No users found on the system")
+                Console.WriteLine("No users found on the system");
             }
         }
 
         // Adding a product
-        public static void addProduct(string productName, decimal price)
+        public static void addProduct(int productID, string productName, decimal price, int stock, string category, string description)
         {
-            productName new Product = new Product(productName, price);
-            products.Add(newProduct);
+            Product product1 = new Product(productID, productName, price, stock, category, description);
+            products.Add(product1);
             Console.WriteLine($"Product '{productName}' has been added with price {price}");
         }
 
@@ -64,14 +65,14 @@ namespace Team4Shop
         public static void removeProduct(string productName)
         {
             var productToDelete = products.Find(p => p.ProductName == productName);
-            if (prouctToDelete != null)
+            if (productToDelete != null)
             {
-                products.Remove(productToRemove);
+                products.Remove(productToDelete);
                 Console.WriteLine($"Product '{productName}' was removed from list");
             }
             else
             {
-                Console.WriteLine("No product found on the system")
+                Console.WriteLine("No product found on the system");
             }
         }
 
@@ -79,14 +80,14 @@ namespace Team4Shop
         public static void UpdateStock(string productName, int stockCount)
         {
             var productToUpdate = products.Find(p => p.ProductName == productName);
-            if (prouctToUpdate != null)
+            if (productToUpdate != null)
             {
-                productsToUpdate.Stock = stockCount;
+                productToUpdate.Stock = stockCount;
                 Console.WriteLine($"Stock for '{productName}' has been updated to the following: {stockCount}");
             }
             else
             {
-                Console.WriteLine("No product found on the system")
+                Console.WriteLine("No product found on the system");
             }
         }
 
@@ -96,7 +97,7 @@ namespace Team4Shop
             var product = products.Find(product => product.ProductName == productName);
             if (product != null)
             {
-                products.Stock += quantity;
+                product.Stock += quantity;
                 Console.WriteLine($"{quantity} items of '{productName}' added to stock");
             }
             else
@@ -106,12 +107,12 @@ namespace Team4Shop
         }
 
         //Removing items from the products stock
-        public static void RemoveItemToStock(string productName, int quantity)
+        public static void RemoveProduct(string productName, int quantity)
         {
             var product = products.Find(product => product.ProductName == productName);
             if (product != null && product.Stock >= quantity)
             {
-                products.Stock -= quantity;
+                product.Stock -= quantity;
                 Console.WriteLine($"{quantity} items of '{productName}' removed from stock");
             }
             else

@@ -6,8 +6,8 @@ public class Program
     public static void Main(string[] args)
     {
         // Register users
-        User.Register(1, "caolan158", "xyZk65", "mullincaolan@gmail.com", "07562140759", "15 Claggan Road", "Omagh");
-        User.Register2(2, "Syed675", "89Cv2", "meeransyed@gmail.com", "0987654321", "456 Derry Rd", "Derry");
+        User.Register( "caolan158", "xyZk65", "mullincaolan@gmail.com", "07562140759", "15 Claggan Road", "Omagh");
+        User.Register( "Syed675", "89Cv2", "meeransyed@gmail.com", "0987654321", "456 Derry Rd", "Derry");
 
         // login for administrators
         Admin admin = new Admin(1, "administrator1", "Code567", "malonekevin@gmail.com", "55890126", "47 Loughlin Rd", "Armagh City");
@@ -20,14 +20,14 @@ public class Program
         Admin.DeleteUser(2);
 
         //Managing product stocklist (admin only)
-        Admin.AddProduct("Samsung TV", 999.99M);
+       
         Admin.AddItemToStock("Samsung TV", 50);
         Admin.UpdateStock("Samsung TV", 100);
-        Admin.RemoveProduct("Samsung TV");
+        Admin.RemoveProduct("Samsung TV", 1);
 
         // User Login
         User user = User.Login("caolan158", "xyZk65");
-        User user = User.Login("Syed675", "89Cv2");
+        User user1 = User.Login("Syed675", "89Cv2");
 
 
         MainMenu();
@@ -50,7 +50,7 @@ public class Program
                     adminLogin();
                     break;
                 case "2":
-                    CustomerLogin();
+                    customerLogin();
                     break;
                 case "3":
                     Console.WriteLine("Exiting the program. Goodbye!");
@@ -59,6 +59,73 @@ public class Program
                     Console.WriteLine("Invalid choice. Please try again.");
                     break;
             }
+        }
+
+        static void customerLogin()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("Customer Menu:");
+                Console.WriteLine("1. View Profile");
+                Console.WriteLine("2. Update Profile");
+                Console.WriteLine("3. Exit");
+                Console.Write("Enter your choice:");
+
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        ViewCustomerProfile();
+                        break;
+                    case "2":
+                        UpdateCustomerProfile();
+                        break;
+                    case "3":
+                        Console.WriteLine("Exiting the program. Goodbye!");
+                        return;
+                    default:
+                        Console.WriteLine("Invalid choice. Please try again.");
+                        break;
+                }
+            }
+            static void ViewCustomerProfile()
+            {
+                // Assume this method will display the customer's profile
+                Console.Clear();
+                Console.WriteLine("Viewing Customer Profile...");
+                // Display the user's profile information here
+                Console.WriteLine("User ID: 1");
+                Console.WriteLine("Username: Cormac");
+                Console.WriteLine("Email: devinecormac@gmail.com");
+                Console.WriteLine("Phone: 123-456-7890");
+                Console.WriteLine("Address: 123 Main St, Omagh");
+                Console.WriteLine("Press any key to return to the menu.");
+                Console.ReadKey();
+            }
+
+            static void UpdateCustomerProfile()
+            {
+                // Assume this method allows the customer to update their profile information
+                Console.Clear();
+                Console.WriteLine("Updating Customer Profile...");
+                Console.Write("Enter new phone number: ");
+                string newPhoneNumber = Console.ReadLine();
+                Console.Write("Enter new address: ");
+                string newAddress = Console.ReadLine();
+
+                // Here we would update the customer's information in the system.
+                // For this example, we just display a success message.
+                Console.WriteLine("Profile updated successfully!");
+                Console.WriteLine($"New Phone: {newPhoneNumber}");
+                Console.WriteLine($"New Address: {newAddress}");
+                Console.WriteLine("Press any key to return to the menu.");
+                Console.ReadKey();
+            }
+
+
+
         }
 
         static void adminLogin()
@@ -89,38 +156,6 @@ public class Program
                         break;
                 }
             }
-
-            static void customerLogin()
-            {
-                while (true)
-                {
-                    Console.Clear();
-                    Console.WriteLine("Customer Menu:");
-                    Console.WriteLine("1. View Profile");
-                    Console.WriteLine("2. Update Profile");
-                    Console.WriteLine("3. Exit");
-                    Console.Write("Enter your choice: );
-
-                    string choice = Console.ReadLine();
-
-                    switch (choice)
-                    {
-                        case "1":
-                        ViewCustomerProfile();
-                        break;
-                    case "2":
-                        updateCustomerProfile();
-                        break;
-                    case "3":
-                        Console.WriteLine("Exiting the program. Goodbye!");
-                        return;
-                    default:
-                        Console.WriteLine("Invalid choice. Please try again.");
-                        break;
-                }
-            }
-                        
-                                      
             static void ProductMenu()
             {
                 while (true)
@@ -145,7 +180,13 @@ public class Program
                             string productName = Console.ReadLine();
                             Console.Write("Enter Product Price: ");
                             decimal price = decimal.Parse(Console.ReadLine());
-                            Product.AddProduct(new Product(productId, productName, price));
+                            Console.WriteLine("Enter stock");
+                            int stock = int.Parse(Console.ReadLine());
+                            Console.WriteLine("Enter category");
+                            string category = Console.ReadLine();
+                            Console.WriteLine("Enter description");
+                            string description = Console.ReadLine();
+                            Product.AddProduct(new Product(productId, productName, price, stock, category, description));
                             break;
                         case "2":
                             Console.Write("Enter Product ID to remove: ");
@@ -159,7 +200,13 @@ public class Program
                             string newProductName = Console.ReadLine();
                             Console.Write("Enter new Product Price: ");
                             decimal newPrice = decimal.Parse(Console.ReadLine());
-                            Product.UpdateProduct(updateProductId, newProductName, newPrice);
+                            Console.WriteLine("Enter stock");
+                            int upstock = int.Parse(Console.ReadLine());
+                            Console.WriteLine("Enter category");
+                            string upcategory = Console.ReadLine();
+                            Console.WriteLine("Enter description");
+                            string updescription = Console.ReadLine();
+                            Product.UpdateProduct(updateProductId, newProductName, newPrice,upstock, upcategory, updescription);
                             break;
                         case "4":
                             Product.ViewAllProducts();
@@ -235,12 +282,7 @@ public class Program
                 }
             }
 
-        }
 
-        static void CustomerLogin()
-        {
-
-            Console.WriteLine("Enter Login details");
         }
     }
 }
