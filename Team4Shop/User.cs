@@ -8,6 +8,15 @@ namespace Team4Shop
 {
     public class User
     {
+
+        private int userID;
+        private string userName;
+        private string password;
+        private string email;
+        private string phoneNumber;
+        private string addressStreet;
+        private string addressCity;
+
         public int UserID { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }

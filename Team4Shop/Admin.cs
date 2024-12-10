@@ -10,13 +10,19 @@ namespace Team4Shop
     {
         // Properties
         public DateTime LastLogin { get; set; }
+         private static List<Admin> admins = new List<Admin>();
         private static List<Product> products = new List<Product>();
 
         // Constructor
         public Admin(int userID, string userName, string password, string email, string phoneNumber, string addressStreet, string addressCity)
             : base(userID, userName, password, email, phoneNumber, addressStreet, addressCity)
         {
-
+            UserID = userID;
+            Password = password;
+            Email = email;
+            PhoneNumber = phoneNumber;
+            AddressStreet = addressStreet;
+            AddressCity = addressCity;
         }  
         
 
@@ -54,11 +60,12 @@ namespace Team4Shop
         }
 
         // Adding a product
-        public static void addProduct(int productID, string productName, decimal price, int stock, string category, string description)
+        public static void addProduct(Product newProduct)
         {
-            Product product1 = new Product(productID, productName, price, stock, category, description);
-            products.Add(product1);
-            Console.WriteLine($"Product '{productName}' has been added with price {price}");
+
+            products.Add(newProduct);
+
+            Console.WriteLine($"Added {newProduct.ProductName} item to product list");
         }
 
         // Removing a product
@@ -119,6 +126,14 @@ namespace Team4Shop
             {
                 Console.WriteLine("No product found on the system");
             }
+        }
+        public static void AddAdmin(Admin newAdmin)
+        {
+
+            admins.Add(newAdmin);
+
+            
+
         }
     }
 }

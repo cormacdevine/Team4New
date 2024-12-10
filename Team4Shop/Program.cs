@@ -11,7 +11,12 @@ public class Program
 
         // login for administrators
         Admin admin = new Admin(1, "administrator1", "Code567", "malonekevin@gmail.com", "55890126", "47 Loughlin Rd", "Armagh City");
+        Admin.AddAdmin(admin);
+
         Admin admin2 = new Admin(2, "administrator2", "Code567", "devinecormac@gmail.com", "1127698", "17 Omagh Rd", "Omagh");
+        Admin.AddAdmin(admin2);
+
+      
 
         // View users (admin only)
         Admin.ViewAllUsers();
@@ -28,6 +33,26 @@ public class Program
         // User Login
         User user = User.Login("caolan158", "xyZk65");
         User user1 = User.Login("Syed675", "89Cv2");
+
+        //Products
+
+        Product product1 = new Product(1, "LEDTV", 459.99, 5, "1", "Samsung");
+        Product.AddProduct(product1);
+
+        Product product2 = new Product(2, "Vacuum Cleaner", 599.99, 10, "2", "Dyson V11");
+        Product.AddProduct(product2);
+
+        Product product3 = new Product(3, "Running Shoes", 120.00, 20, "3", "Nike Pegasus");
+        Product.AddProduct(product3);
+
+        Product product4 = new Product(4, "Software Programming", 12.99, 25,"4 ", "C# for beginners");
+        Product.AddProduct(product4);
+
+        Product product5 = new Product(5, "Blender", 89.99, 15, "2", "NutriBullet Pro");
+        Product.AddProduct(product5);
+
+        Product product6 = new Product(6, "SmartPhone", 999.99, 8, "5", "iPhone 13");
+        Product.AddProduct(product6);
 
 
         MainMenu();
@@ -127,6 +152,15 @@ public class Program
 
 
         }
+        static void checkAdmin()
+        {
+            Console.WriteLine("Enter username");
+            string userName = Console.ReadLine();
+
+            Console.WriteLine("Enter password");
+            string password = Console.ReadLine();
+
+        }
 
         static void adminLogin()
         {
@@ -156,6 +190,8 @@ public class Program
                         break;
                 }
             }
+
+            
             static void ProductMenu()
             {
                 while (true)
@@ -179,7 +215,7 @@ public class Program
                             Console.Write("Enter Product Name: ");
                             string productName = Console.ReadLine();
                             Console.Write("Enter Product Price: ");
-                            decimal price = decimal.Parse(Console.ReadLine());
+                            double price = double.Parse(Console.ReadLine());
                             Console.WriteLine("Enter stock");
                             int stock = int.Parse(Console.ReadLine());
                             Console.WriteLine("Enter category");
@@ -199,7 +235,7 @@ public class Program
                             Console.Write("Enter new Product Name: ");
                             string newProductName = Console.ReadLine();
                             Console.Write("Enter new Product Price: ");
-                            decimal newPrice = decimal.Parse(Console.ReadLine());
+                            double newPrice = double.Parse(Console.ReadLine());
                             Console.WriteLine("Enter stock");
                             int upstock = int.Parse(Console.ReadLine());
                             Console.WriteLine("Enter category");

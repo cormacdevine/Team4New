@@ -8,10 +8,16 @@ namespace Team4Shop
 {
     public class Product
     {
+        private int productID;
+        private string productName;
+        private double price;
+        private int stock;
+        private string category;
+        private string description;
         // Properties
         public int ProductID { get; set; } // Unique identifier for the product
         public string ProductName { get; set; } // Name of the product
-        public decimal Price { get; set; } // Price of the product
+        public double Price { get; set; } // Price of the product
         public int Stock { get; set; } // Stock available for the product
         public string Category { get; set; } // Product category
         public string Description { get; set; } // Product description
@@ -20,7 +26,7 @@ namespace Team4Shop
         private static List<Product> products = new List<Product>();
 
         // Constructor
-        public Product(int productID, string productName, decimal price, int stock, string category, string description)
+        public Product(int productID, string productName, double price, int stock, string category, string description)
         {
             ProductID = productID;
             ProductName = productName;
@@ -31,11 +37,7 @@ namespace Team4Shop
         }
 
         // Method to add a new product
-        public static void AddProduct(Product newProduct)
-        {
-            products.Add(newProduct);
-            Console.WriteLine($"Product '{newProduct.ProductName}' has been added successfully.");
-        }
+       
 
         // Method to remove a product
         public static void RemoveProduct(int productID)
@@ -53,7 +55,7 @@ namespace Team4Shop
         }
 
         // Method to update the details of a product
-        public static void UpdateProduct(int productID, string productName, decimal price, int stock, string category, string description)
+        public static void UpdateProduct(int productID, string productName, double price, int stock, string category, string description)
         {
             var productToUpdate = products.Find(p => p.ProductID == productID);
             if (productToUpdate != null)
@@ -121,18 +123,13 @@ namespace Team4Shop
         }
 
         // Method to add stock to a product
-        public static void AddProduct(int productID, int quantity)
+        public static void AddProduct(Product newProduct)
         {
-            var product = products.Find(p => p.ProductID == productID);
-            if (product != null)
-            {
-                product.Stock += quantity;
-                Console.WriteLine($"Added {quantity} items to '{product.ProductName}'. New stock: {product.Stock}.");
-            }
-            else
-            {
-                Console.WriteLine($"Product with ID {productID} not found.");
-            }
+           
+            products.Add(newProduct);
+
+            Console.WriteLine($"Added {newProduct.ProductName} item to product list");
+
         }
 
         // Method to reduce stock of a product
