@@ -1,6 +1,7 @@
 ﻿using System;
 using Team4Shop;
 
+
 public class Program
 {
     public static void Main(string[] args)
@@ -72,7 +73,7 @@ public class Program
             switch (choice)
             {
                 case "1":
-                    adminLogin();
+                    checkAdmin();
                     break;
                 case "2":
                     customerLogin();
@@ -141,7 +142,7 @@ public class Program
                 string newAddress = Console.ReadLine();
 
                 // Here we would update the customer's information in the system.
-                // For this example, we just display a success message.
+                
                 Console.WriteLine("Profile updated successfully!");
                 Console.WriteLine($"New Phone: {newPhoneNumber}");
                 Console.WriteLine($"New Address: {newAddress}");
@@ -160,6 +161,25 @@ public class Program
             Console.WriteLine("Enter password");
             string password = Console.ReadLine();
 
+            List<Admin> admins = Admin.GetAllAdmins();
+
+            // Check if the entered credentials match any admin
+            bool isAdminFound = false;
+            foreach (var admin in admins)
+            {
+                if (admin.UserName == userName && admin.Password == password)
+                {
+                    isAdminFound = true;
+                    adminLogin();
+                    // You can add more actions here for when login is successful
+                    break;
+                }
+            }
+
+            if (!isAdminFound)
+            {
+                MainMenu();
+            }
         }
 
         static void adminLogin()
@@ -322,3 +342,4 @@ public class Program
         }
     }
 }
+

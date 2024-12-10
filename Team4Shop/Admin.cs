@@ -44,6 +44,11 @@ namespace Team4Shop
             }
         }
 
+        public static List<Admin> GetAllAdmins()
+        {
+            return admins;
+        }
+
         // Method that can delete user (admin can only access)
         public static void DeleteUser(int userID)
         {
@@ -128,12 +133,8 @@ namespace Team4Shop
             }
         }
         public static void AddAdmin(Admin newAdmin)
-        {
-
+        { 
             admins.Add(newAdmin);
-
-            
-
         }
     }
 }
