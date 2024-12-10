@@ -171,11 +171,11 @@ public class Program
                 {
                     isAdminFound = true;
                     adminLogin();
-                    // You can add more actions here for when login is successful
+                    
                     break;
                 }
             }
-
+            //returns to main menu if credentials not found
             if (!isAdminFound)
             {
                 MainMenu();
